@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account,AccountUser,Profile
+from .models import Account,Profile,Address,UserProfile
 
 # Register your models here.
 class AccountAdmin(UserAdmin):
@@ -25,5 +25,11 @@ class AccountUserAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
-admin.site.register(AccountUser, AccountUserAdmin)
+
 admin.site.register(Profile)
+admin.site.register(Address)
+
+class UserProfileAdmin(admin.ModelAdmin):
+   liat_display=('user','city','state','country')
+
+admin.site.register(UserProfile,UserProfileAdmin)
